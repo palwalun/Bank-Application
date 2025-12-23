@@ -3,6 +3,8 @@
 	agent any
 	 environment {
         SCANNER_HOME=tool 'SonarScanner'
+		IMAGE_NAME = 'bankapp'
+		TAG = 'latest'
     }
 	  stages{
 		stage('Checkout'){
@@ -26,12 +28,16 @@
             }
         }
 		stage('OWASP Dependency-Check') {
-      steps {
-         dependencyCheck additionalArguments: '--scan pom.xml', odcInstallation: 'Dependency-Check'
-             dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+          steps {
+           dependencyCheck additionalArguments: '--scan pom.xml', odcInstallation: 'Dependency-Check'
+              dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
        }
-		
+		stage('Build Docker Image') {
+          steps {
+            sh 'docker build -t bankapp:latest'
+            }
+       }
 		
 	  }
 
