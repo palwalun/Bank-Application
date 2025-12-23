@@ -1,7 +1,9 @@
 	pipeline{
 
 	agent any
-	 
+	 environment {
+        SCANNER_HOME=tool 'SonarScanner'
+    }
 	  stages{
 		stage('Checkout'){
 		 steps{
@@ -16,9 +18,9 @@
 		stage("Sonarqube Analysis "){
             steps{
                 withSonarQubeEnv('SonarQube') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Petclinic \
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=BankApp \
                     -Dsonar.java.binaries=. \
-                    -Dsonar.projectKey=Petclinic '''
+                    -Dsonar.projectKey=BankApp '''
     
                 }
             }
