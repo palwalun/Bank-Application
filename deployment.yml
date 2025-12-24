@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: bankapp-deployment
+ labels:
+  app: bank
+spec:
+ replicas: 2
+ selector:
+ matchLabels:
+  app: bank
+ template:
+  metadata:
+   name: deployment-pod
+   labels:
+    app: bank
+  spec:
+   containers:
+    name: bankapp-containers
+	  image: devopsproject1.azurecr.io/bankapp:latest
+	  ports:
+	    - containerPort: 8080
+	
