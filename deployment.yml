@@ -16,8 +16,8 @@ spec:
     app: bank
   spec:
    containers:
-    name: bankapp-containers
-	  image: devopsproject1.azurecr.io/bankapp:latest
-	  ports:
-	    - containerPort: 8080
+    - name: bankapp-containers
+	    image: devopsproject1.azurecr.io/bankapp:latest
+	    ports:
+	      - containerPort: 8080
 	
