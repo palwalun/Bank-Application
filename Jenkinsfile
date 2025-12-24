@@ -35,7 +35,7 @@
        }
 		stage('Build Docker Image') {
           steps {
-            sh 'docker build -t bankapp:latest'
+            sh 'docker build -t bankapp:latest .'
             }
        }
 		
