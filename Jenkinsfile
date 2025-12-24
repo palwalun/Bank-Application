@@ -50,9 +50,17 @@
                echo $ACR_PASS | docker login $ACR_LOGIN_SERVER \
                -u $ACR_USER --password-stdin
              '''
+           }
+          }
          }
-       }
-     }
+	    stage('Tag Image') {
+        steps {
+         sh '''
+           docker tag ${IMAGE_NAME}:${TAG} \
+           $ACR_LOGIN_SERVER/${IMAGE_NAME}:${TAG}
+         '''
+          }
+        }
 	  }
 
 	}
