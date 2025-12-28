@@ -87,7 +87,9 @@
 	  steps{
 	   sh '''
 	    kubectl apply -f deployment.yml
-		kubectl apply -f service.yml
+		  kubectl apply -f service.yml
+      kubectl apply -f mysql-statefulset.yml
+      kubectl apply -f mysql-service.yml
 		'''
 	   }
 	  

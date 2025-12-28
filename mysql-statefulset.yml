@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+ name: bankapp-statefulset
+ labels:
+  app: bank
+spec:
+ replicas: 1
+ serviceName: bankapp-service
+ selector:
+  matchLabels:
+   app: bank
+ template:
+  metadata:
+   name: mysql-pod
+   labels:
+    app: bank
+  spec:
+   containers:
+    - name: mysql-container
+      image: mysql:latest
+      env:
+       - name: MYSQL_ROOT_PASSWORD
+         value: "Test@123"
+      ports:
+       - containerPort: 3306
