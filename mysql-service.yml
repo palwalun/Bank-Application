@@ -7,4 +7,4 @@ spec:
  ports:
   - port: 3306
     selector:
-    app: bank
+     app: bank
