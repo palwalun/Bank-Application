@@ -6,7 +6,7 @@ metadata:
   app: bank
 spec:
  replicas: 1
- servicename: bankapp-service
+ serviceName: bankapp-service
  selector:
   matchLabels:
    app: bank
